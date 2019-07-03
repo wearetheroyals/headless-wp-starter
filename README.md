@@ -1,16 +1,14 @@
-![WordPress + React Starter Kit](frontend/static/images/wordpress-plus-react-header.png)
+# WordPress + Next.js Starter Kit
 
-[![Build status](https://travis-ci.org/postlight/headless-wp-starter.svg)](https://travis-ci.org/postlight/headless-wp-starter)
+Headless WordPress + Next.js Starter Kit is an automated toolset that will spin up three things:
 
-[Postlight](https://postlight.com)'s Headless WordPress + React Starter Kit is an automated toolset that will spin up three things:
+1.  A WordPress backend that serves its data via the [WP REST API](https://developer.wordpress.org/rest-api/) and [GraphQL](http://graphql.org/), which supports posts, pages, categories, menus, search, and user sign-in.
+2.  A sample Next.js frontend fed by the [WP GraphQL API](https://www.wpgraphql.com/).
+3.  A [MariaDB](https://mariadb.org/) database
 
-1.  A WordPress backend that serves its data via the [WP REST API](https://developer.wordpress.org/rest-api/) and [GraphQL](http://graphql.org/).
-2.  A sample React frontend powered by the [WP GraphQL API](https://www.wpgraphql.com/), which supports posts, pages, categories, menus, search, and user sign-in.
-3.  Another sample server-side rendered React frontend using [Next.js](https://github.com/zeit/next.js/) powered by the WP REST API.
+You can read all about it in [this handy introduction from Postlight](https://postlight.com/trackchanges/introducing-postlights-wordpress-react-starter-kit).
 
-You can read all about it in [this handy introduction](https://postlight.com/trackchanges/introducing-postlights-wordpress-react-starter-kit).
-
-**What's inside:**
+**What's inside?**
 
 - An automated installer which bootstraps a core WordPress installation that provides an established, stable REST API.
 - A plugin which exposes a newer, in-progress [GraphQL API for WordPress](https://wpgraphql.com/).
@@ -19,9 +17,19 @@ You can read all about it in [this handy introduction](https://postlight.com/tra
 - JWT authentication plugins: [JWT WP REST](https://wordpress.org/plugins/jwt-authentication-for-wp-rest-api/) and [JWT WP GraphQL](https://github.com/wp-graphql/wp-graphql-jwt-authentication).
 - All the starter WordPress theme code and settings headless requires, including pretty permalinks, CORS `Allow-Origin` headers, and useful logging functions for easy debugging.
 - A mechanism for easily importing data from an existing WordPress installation anywhere on the web using [WP Migrate DB Pro](https://deliciousbrains.com/wp-migrate-db-pro/) and its accompanying plugins (license required).
-- A sample, starter frontend React app powered by [GraphQL](http://graphql.org/).
-- Another sample, starter frontend React app, server-side rendered via [Next.js](https://learnnextjs.com/), powered by the WP REST API.
+- A sample, starter frontend Next.js app powered by [GraphQL](http://graphql.org/).
+- Another sample, starter frontend React app, server-side rendered via [Next.js](https://learnnextjs.com/), powered by WP GraphQL.
 - [Docker](https://www.docker.com/) containers and scripts to manage them, for easily running the frontend React apps and backend locally or deploying it to any hosting provider with Docker support.
+
+**What's changed?**
+
+Huge thanks to the team at [Postlight Labs](https://postlight.com) for open sourcing their [original starter](https://github.com/postlight/headless-wp-starter). It was such an excellent starting point, it inspired us to
+create this fork that's been amended to fit our coding practice at The Royals
+
+- The Next.js application now uses TypeScript instead of plain JavaScript
+- The JSON API connection for Next.js has been replaced with GraphQL
+- Majority of the components have been rewritten from class style to functional
+- The plain React frontend has been removed
 
 Let's get started.
 
@@ -29,7 +37,7 @@ Let's get started.
 
 _Prerequisite:_ Before you begin, you need [Docker](https://www.docker.com) installed. On Linux, you might need to install [docker-compose](https://docs.docker.com/compose/install/#install-compose) separately.
 
-Docker Compose builds and starts four containers by default: `db-headless`, `wp-headless`, `frontend` & `frontend-graphql`:
+Docker Compose builds and starts four containers by default: `db-headless`, `wp-headless`, `frontend`:
 
     docker-compose up -d
 
@@ -46,14 +54,13 @@ _Optional:_ you can run the frontend locally while WordPress still runs on Docke
     docker-compose up -d wp-headless
     cd frontend && yarn && yarn start
 
-Once the containers are running, you can visit the React frontends and backend WordPress admin in your browser.
+Once the containers are running, you can visit the Next.js frontend and backend WordPress admin in your browser.
 
 ## Frontend
 
-This starter kit provides two frontend containers:
+This starter kit provides one "frontend" container:
 
-- `frontend` container powered by the WP REST API is server-side rendered using Next.js, and exposed on port `3000`: [http://localhost:3000](http://localhost:3000)
-- `frontend-graphql` container powered by GraphQL, exposed on port `3001`: [http://localhost:3001](http://localhost:3001)
+- `frontend` container powered by WP GRAPHQL is server-side rendered using Next.js, and exposed on port `3000`: [http://localhost:3000](http://localhost:3000)
 
 Here's what the frontend looks like:
 
@@ -175,7 +182,7 @@ You will need to also migrate MySQL data to the new MySQL db container.
 
 **Docker Caching**
 
-In some cases, you need to delete the `wp-headless` image (not only the container) and rebuild it.
+In some cases, you need to delete the `wp-headless` and `frontend` images (not only the container) and rebuild it.
 
 **CORS errors**
 
@@ -185,4 +192,4 @@ See anything else you'd like to add here? Please send a pull request!
 
 ---
 
-🔬 A Labs project from your friends at [Postlight](https://postlight.com). Happy coding!
+🔬 A project from at [The Royals](https://theroyals.com.au). Originally forked from the team at [Postlight](https://postlight.com). Happy coding!
