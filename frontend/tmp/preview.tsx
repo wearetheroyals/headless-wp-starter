@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import fetch from 'isomorphic-unfetch';
 import Error from 'next/error';
-import Layout from '../components/Layout';
-import PageWrapper from '../components/PageWrapper';
+import Layout from '../layout';
+import PageWrapper from '../layout/PageWrapper'
 import Menu from '../components/Menu';
 import Config from '../config';
 

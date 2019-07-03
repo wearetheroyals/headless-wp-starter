@@ -4,13 +4,14 @@ services:
     db-headless:
         container_name: db-headless
         environment:
-            - MYSQL_RANDOM_ROOT_PASSWORD=yes
-            - MYSQL_DATABASE=${WORDPRESS_DB_NAME}
-            - MYSQL_PASSWORD=${WORDPRESS_DB_PASSWORD}
-            - MYSQL_USER=${WORDPRESS_DB_USER}
-        image: mariadb
+            MYSQL_RANDOM_ROOT_PASSWORD: 'yes'
+            MYSQL_DATABASE: wp_headless
+            MYSQL_PASSWORD: wp_headless
+            MYSQL_USER: wp_headless
+        image: mariadb:10.3
         ports:
             - '3307:3306'
+
     wp-headless:
         build: .
         command: bash -c 'install_wordpress && apache2-foreground'
@@ -27,27 +28,33 @@ services:
             - ./docker/migratedb_import.sh:/usr/local/bin/migratedb_import
             - ./docker/postlightheadlesswpstarter.wordpress.xml:/var/www/postlightheadlesswpstarter.wordpress.xml
             - ./docker/plugins:/var/www/plugins
+
     frontend:
         command: bash -c 'yarn && yarn start'
         container_name: frontend
+        depends_on:
+            - wp-headless
         expose:
             - '3000'
-        image: node
+        image: node:10
+        environment:
+            GRAPHQL_ENDPOINT: http://wp-headless:8080/graphql
         ports:
             - '3000:3000'
         user: node
         volumes:
             - ./frontend:/home/node/app
         working_dir: /home/node/app
-    frontend-graphql:
-        command: bash -c 'yarn && yarn start'
-        container_name: frontend-graphql
-        expose:
-            - '3001'
-        image: node
-        ports:
-            - '3001:3001'
-        user: node
-        volumes:
-            - ./frontend-graphql:/home/node/app
-        working_dir: /home/node/app
+
+    # frontend-graphql:
+    #     command: bash -c 'yarn && yarn start'
+    #     container_name: frontend-graphql
+    #     expose:
+    #         - '3001'
+    #     image: node:10
+    #     ports:
+    #         - '3001:3001'
+    #     user: node
+    #     volumes:
+    #         - ./frontend-graphql:/home/node/app
+    #     working_dir: /home/node/app
