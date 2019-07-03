@@ -2,7 +2,7 @@
 /**
  * Add ACF options page.
  *
- * @package  Postlight_Headless_WP
+ * @package  TheRoyals_Headless_WP
  */
 
 // Add a custom options page to associate ACF fields.

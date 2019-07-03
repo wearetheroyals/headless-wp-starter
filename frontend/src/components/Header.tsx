@@ -12,7 +12,7 @@ const Header: NextFunctionComponent<{}> = () => (
       />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <meta charSet="utf-8" />
-      <title>WordPress + React Starter Kit Frontend by Postlight</title>
+      <title>WordPress + Next.js Starter Kit Frontend by The Royals</title>
     </Head>
   </div>
 );

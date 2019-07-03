@@ -35,11 +35,13 @@
 
 		<item>
 			<title>Congratulations!</title>
-			<content:encoded><![CDATA[You've successfully set up <a href="https://github.com/postlight/headless-wp-starter" target="_new">Postlight's WordPress + React Starter Kit</a> on your computer.
+			<content:encoded><![CDATA[You've successfully set up <a href="https://github.com/wearetheroyals/headless-wp-starter" target="_new">WordPress + Next.js Starter Kit</a> on your computer.
 
-You are now running a <a href="http://localhost:8080/wp-admin/">WordPress backend</a> and you're looking at the React frontend.
+You are now running a <a href="http://localhost:8080/wp-admin/">WordPress backend</a> and you're looking at the Next.js frontend.
 
-All the content you see here is created in WordPress -- posts, pages, categories, and menus. <a href="http://localhost:8080/wp-admin/post.php?post=9&action=edit" target="_new">Edit this page</a> to update it.]]></content:encoded>
+All the content you see here is created in WordPress -- posts, pages, categories, and menus. <a href="http://localhost:8080/wp-admin/post.php?post=9&action=edit" target="_new">Edit this page</a> to update it.
+
+Note that this software is licensed under <a href="https://github.com/wearetheroyals/headless-wp-starter/blob/master/LICENSE" target="_blank">GPL2.0</a>]]></content:encoded>
 			<wp:post_name><![CDATA[welcome]]></wp:post_name>
 			<wp:status><![CDATA[publish]]></wp:status>
 			<wp:post_type><![CDATA[page]]></wp:post_type>

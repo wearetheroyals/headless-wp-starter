@@ -23,8 +23,7 @@ You can read all about it in [this handy introduction from Postlight](https://po
 
 **What's changed?**
 
-Huge thanks to the team at [Postlight Labs](https://postlight.com) for open sourcing their [original starter](https://github.com/postlight/headless-wp-starter). It was such an excellent starting point, it inspired us to
-create this fork that's been amended to fit our coding practice at The Royals
+Huge thanks to the team at [Postlight Labs](https://postlight.com) for open sourcing their [original starter](https://github.com/postlight/headless-wp-starter). It was such an excellent starting point, it inspired us to create this fork that's been amended to fit our coding practice at The Royals
 
 - The Next.js application now uses TypeScript instead of plain JavaScript
 - The JSON API connection for Next.js has been replaced with GraphQL
@@ -61,10 +60,6 @@ Once the containers are running, you can visit the Next.js frontend and backend 
 This starter kit provides one "frontend" container:
 
 - `frontend` container powered by WP GRAPHQL is server-side rendered using Next.js, and exposed on port `3000`: [http://localhost:3000](http://localhost:3000)
-
-Here's what the frontend looks like:
-
-![Frontend Screencast](/wordpress-react-starter-kit-fe.gif)
 
 You can follow the `yarn start` output by running docker-compose `logs` command followed by the container name. For example:
 
@@ -192,4 +187,4 @@ See anything else you'd like to add here? Please send a pull request!
 
 ---
 
-🔬 A project from at [The Royals](https://theroyals.com.au). Originally forked from the team at [Postlight](https://postlight.com). Happy coding!
+🔬 A project from [The Royals](https://theroyals.com.au). Originally forked from the team at [Postlight](https://postlight.com). Happy coding!

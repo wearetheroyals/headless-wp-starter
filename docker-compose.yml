@@ -26,7 +26,7 @@ services:
             - ./wordpress:/var/www/html
             - ./docker/install_wordpress.sh:/usr/local/bin/install_wordpress
             - ./docker/migratedb_import.sh:/usr/local/bin/migratedb_import
-            - ./docker/postlightheadlesswpstarter.wordpress.xml:/var/www/postlightheadlesswpstarter.wordpress.xml
+            - ./docker/theroyalsheadlesswpstarter.wordpress.xml:/var/www/theroyalsheadlesswpstarter.wordpress.xml
             - ./docker/plugins:/var/www/plugins
 
     frontend:
@@ -45,16 +45,3 @@ services:
         volumes:
             - ./frontend:/home/node/app
         working_dir: /home/node/app
-
-    # frontend-graphql:
-    #     command: bash -c 'yarn && yarn start'
-    #     container_name: frontend-graphql
-    #     expose:
-    #         - '3001'
-    #     image: node:10
-    #     ports:
-    #         - '3001:3001'
-    #     user: node
-    #     volumes:
-    #         - ./frontend-graphql:/home/node/app
-    #     working_dir: /home/node/app

@@ -2,7 +2,7 @@
 /**
  * Add GraphQL resolvers
  *
- * @package  Postlight_Headless_WP
+ * @package  TheRoyals_Headless_WP
  */
 
 // check if WPGraphQL plugin is active.

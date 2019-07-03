@@ -63,6 +63,6 @@ wp menu item add-term header-menu category 1
 wp menu item add-custom header-menu "Read about the Starter Kit" https://postlight.com/trackchanges/introducing-postlights-wordpress-react-starter-kit
 wp menu location assign header-menu header-menu
 wp post update 1 --post_title="Sample Post" --post_name=sample-post
-wp import /var/www/postlightheadlesswpstarter.wordpress.xml --authors=skip
+wp import /var/www/theroyalsheadlesswpstarter.wordpress.xml --authors=skip
 
 echo "Great. You can now log into WordPress at: $WORDPRESS_URL/wp-admin ($WORDPRESS_ADMIN_USER/$WORDPRESS_ADMIN_PASSWORD)"

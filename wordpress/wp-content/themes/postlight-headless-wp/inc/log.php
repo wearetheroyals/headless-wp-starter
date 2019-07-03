@@ -2,7 +2,7 @@
 /**
  * Log helper functions.
  *
- * @package  Postlight_Headless_WP
+ * @package  TheRoyals_Headless_WP
  */
 
 /**

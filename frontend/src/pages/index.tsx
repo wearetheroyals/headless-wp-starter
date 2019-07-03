@@ -104,7 +104,9 @@ const Index: NextFunctionComponent = () => {
               })}
 
             <h2>Where You're At</h2>
-            <p>You are looking at the GraphQL-powered NextJS frontend</p>
+            <p>
+              You are looking at the WordPress GraphQL-powered NextJS frontend
+            </p>
           </Layout>
         );
       }}

@@ -10,22 +10,25 @@ const Footer: NextFunctionComponent<{}> = () => (
     <hr style={hrStyle} />
     <p>
       <span role="img" aria-label="microscope">
-        🔬 A <a href="https://postlight.com">Postlight Labs</a> project.
+        🔬 A project by <a href="https://theroyals.com.au">The Royals</a>.
       </span>
+    </p>
+    <p>
       <span role="img" aria-label="fork">
         🍴
       </span>{' '}
-      <a href="https://github.com/postlight/headless-wp-starter">
+      <a href="https://github.com/wearetheroyals/headless-wp-starter">
         Fork on GitHub
       </a>
-      .
+      . We originally forked this project from{' '}
+      <a href="https://postlight.com">Postlight Labs</a>
     </p>
     <p>
       <span role="img" aria-label="wave">
         👋
       </span>{' '}
-      Need help with your publishing platform?{' '}
-      <a href="mailto:hello@postlight.com?subject=Partner+with+Postlight+on+a+headless+CMS+project">
+      Need help with your next tech project?{' '}
+      <a href="mailto:concierge@theroyals.com.au?subject=Partner+with+The+Royals+on+a+headless+CMS+project">
         Contact us
       </a>
       .

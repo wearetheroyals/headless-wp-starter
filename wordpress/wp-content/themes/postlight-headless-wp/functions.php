@@ -4,7 +4,7 @@
  *
  * Read more about this project at https://postlight.com/trackchanges/introducing-postlights-wordpress-react-starter-kit.
  *
- * @package  Postlight_Headless_WP
+ * @package  TheRoyals_Headless_WP
  */
 
 // Frontend origin.
