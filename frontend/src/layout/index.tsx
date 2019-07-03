@@ -4,10 +4,7 @@ import Footer from '../components/Footer';
 import Menu from '../components/Menu';
 import { NextFunctionComponent } from 'next';
 
-const layoutStyle = {
-  margin: 20,
-  padding: 20,
-};
+import './style.scss';
 
 interface Props {
   children: any;
@@ -15,7 +12,7 @@ interface Props {
 
 const Layout: NextFunctionComponent<Props> = ({ children }) => {
   return (
-    <div style={layoutStyle}>
+    <div className="layout">
       <Header />
       <Menu></Menu>
       {children}

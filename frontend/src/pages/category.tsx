@@ -71,22 +71,24 @@ const Category: NextFunctionComponent<Props> = ({ slug }) => {
 
         return (
           <Layout>
-            <h1>{category.name} Posts</h1>
-            {Array.isArray(posts) &&
-              posts.map(({ node }) => {
-                return (
-                  <ul key={node.slug}>
-                    <li>
-                      <Link
-                        as={`/post/${node.slug}`}
-                        href={`/post?slug=${node.slug}`}
-                      >
-                        <a>{node.title}</a>
-                      </Link>
-                    </li>
-                  </ul>
-                );
-              })}
+            <section className="category">
+              <h1>{category.name} Posts</h1>
+              {Array.isArray(posts) &&
+                posts.map(({ node }) => {
+                  return (
+                    <ul key={node.slug}>
+                      <li>
+                        <Link
+                          as={`/post/${node.slug}`}
+                          href={`/post?slug=${node.slug}`}
+                        >
+                          <a>{node.title}</a>
+                        </Link>
+                      </li>
+                    </ul>
+                  );
+                })}
+            </section>
           </Layout>
         );
       }}

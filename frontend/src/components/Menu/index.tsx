@@ -5,6 +5,8 @@ import gql from 'graphql-tag';
 import Link from 'next/link';
 import { NextFunctionComponent } from 'next';
 
+import './style.scss';
+
 const MENU_QUERY = gql`
   query MenuQuery {
     headerMenu {
@@ -39,7 +41,7 @@ const Menu: NextFunctionComponent<{}> = () => {
         const { headerMenu } = data;
 
         return (
-          <div>
+          <nav className="menu">
             <Link href="/">
               <a style={linkStyle}>Home</a>
             </Link>
@@ -48,7 +50,7 @@ const Menu: NextFunctionComponent<{}> = () => {
               headerMenu.map(item => {
                 if (item.type === 'external') {
                   return (
-                    <a href={item.url} key={item.url} style={linkStyle}>
+                    <a href={item.url} key={item.url} className="menu-link">
                       {item.label}
                     </a>
                   );
@@ -61,11 +63,11 @@ const Menu: NextFunctionComponent<{}> = () => {
                     href={`/${page}?slug=${slug}`}
                     key={item.url}
                   >
-                    <a style={linkStyle}>{item.label}</a>
+                    <a className="menu-link">{item.label}</a>
                   </Link>
                 );
               })}
-          </div>
+          </nav>
         );
       }}
     </Query>

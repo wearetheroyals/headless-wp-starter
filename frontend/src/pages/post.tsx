@@ -6,6 +6,8 @@ import { NextFunctionComponent, NextContext } from 'next';
 
 import Layout from '../layout';
 
+import './_post.scss';
+
 const POST_QUERY = gql`
   query PostQuery($filter: String!) {
     postBy(slug: $filter) {
@@ -47,13 +49,15 @@ const Post: NextFunctionComponent<Props> = ({ slug }) => {
 
         return (
           <Layout>
-            <h1>{data.postBy.title}</h1>
-            <div
-              // eslint-disable-next-line react/no-danger
-              dangerouslySetInnerHTML={{
-                __html: data.postBy.content,
-              }}
-            />
+            <section className="post">
+              <h1>{data.postBy.title}</h1>
+              <div
+                // eslint-disable-next-line react/no-danger
+                dangerouslySetInnerHTML={{
+                  __html: data.postBy.content,
+                }}
+              />
+            </section>
           </Layout>
         );
       }}

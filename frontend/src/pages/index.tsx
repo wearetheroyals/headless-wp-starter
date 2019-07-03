@@ -6,6 +6,8 @@ import { NextFunctionComponent } from 'next';
 
 import Layout from '../layout';
 
+import './_category.scss';
+
 const headerImageStyle = {
   marginTop: 50,
   marginBottom: 50,
@@ -64,49 +66,51 @@ const Index: NextFunctionComponent = () => {
 
         return (
           <Layout>
-            <img
-              src="/static/images/wordpress-plus-react-header.png"
-              width="815"
-              alt="logo"
-              style={headerImageStyle}
-            />
-            <h2>Posts</h2>
-            {Array.isArray(posts.edges) &&
-              posts.edges.map(({ node }) => {
-                return (
-                  <ul key={node.slug}>
-                    <li>
-                      <Link
-                        as={`/post/${node.slug}`}
-                        href={`/post?slug=${node.slug}`}
-                      >
-                        <a>{node.title}</a>
-                      </Link>
-                    </li>
-                  </ul>
-                );
-              })}
-            <h2>Pages</h2>
-            {Array.isArray(pages.edges) &&
-              pages.edges.map(({ node }) => {
-                return (
-                  <ul key={node.slug}>
-                    <li>
-                      <Link
-                        as={`/page/${node.slug}`}
-                        href={`/page?slug=${node.slug}&apiRoute=page`}
-                      >
-                        <a>{node.title}</a>
-                      </Link>
-                    </li>
-                  </ul>
-                );
-              })}
+            <section className="index">
+              <img
+                src="/static/images/wordpress-plus-react-header.png"
+                width="815"
+                alt="logo"
+                style={headerImageStyle}
+              />
+              <h2>Posts</h2>
+              {Array.isArray(posts.edges) &&
+                posts.edges.map(({ node }) => {
+                  return (
+                    <ul key={node.slug}>
+                      <li>
+                        <Link
+                          as={`/post/${node.slug}`}
+                          href={`/post?slug=${node.slug}`}
+                        >
+                          <a>{node.title}</a>
+                        </Link>
+                      </li>
+                    </ul>
+                  );
+                })}
+              <h2>Pages</h2>
+              {Array.isArray(pages.edges) &&
+                pages.edges.map(({ node }) => {
+                  return (
+                    <ul key={node.slug}>
+                      <li>
+                        <Link
+                          as={`/page/${node.slug}`}
+                          href={`/page?slug=${node.slug}&apiRoute=page`}
+                        >
+                          <a>{node.title}</a>
+                        </Link>
+                      </li>
+                    </ul>
+                  );
+                })}
 
-            <h2>Where You're At</h2>
-            <p>
-              You are looking at the WordPress GraphQL-powered NextJS frontend
-            </p>
+              <h2>Where You're At</h2>
+              <p>
+                You are looking at the WordPress GraphQL-powered NextJS frontend
+              </p>
+            </section>
           </Layout>
         );
       }}

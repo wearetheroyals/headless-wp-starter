@@ -6,6 +6,8 @@ import { NextFunctionComponent, NextContext } from 'next';
 
 import Layout from '../layout';
 
+import './_page.scss';
+
 const PAGE_QUERY = gql`
   query PageQuery($uri: String!) {
     pageBy(uri: $uri) {
@@ -41,13 +43,15 @@ const Page: NextFunctionComponent<Props> = ({ slug }) => {
 
         return (
           <Layout>
-            <h1>{data.pageBy.title}</h1>
-            <div
-              // eslint-disable-next-line react/no-danger
-              dangerouslySetInnerHTML={{
-                __html: data.pageBy.content,
-              }}
-            />
+            <section className="page">
+              <h1>{data.pageBy.title}</h1>
+              <div
+                // eslint-disable-next-line react/no-danger
+                dangerouslySetInnerHTML={{
+                  __html: data.pageBy.content,
+                }}
+              />
+            </section>
           </Layout>
         );
       }}

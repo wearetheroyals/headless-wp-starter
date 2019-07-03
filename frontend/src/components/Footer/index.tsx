@@ -1,13 +1,11 @@
 import React from 'react';
 import { NextFunctionComponent } from 'next';
 
-const hrStyle = {
-  marginTop: 75,
-};
+import './style.scss';
 
 const Footer: NextFunctionComponent<{}> = () => (
-  <div>
-    <hr style={hrStyle} />
+  <footer className="footer">
+    <hr />
     <p>
       <span role="img" aria-label="microscope">
         🔬 A project by <a href="https://theroyals.com.au">The Royals</a>.
@@ -33,7 +31,7 @@ const Footer: NextFunctionComponent<{}> = () => (
       </a>
       .
     </p>
-  </div>
+  </footer>
 );
 
 export default Footer;
