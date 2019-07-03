@@ -1,8 +1,9 @@
 import React from 'react';
 import Head from 'next/head';
 import stylesheet from '../styles/style.scss';
+import { NextFunctionComponent } from 'next';
 
-const Header = () => (
+const Header: NextFunctionComponent<{}> = () => (
   <div>
     <Head>
       <style

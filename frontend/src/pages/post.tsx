@@ -2,6 +2,7 @@ import React from 'react';
 import Error from 'next/error';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
+import { NextFunctionComponent, NextContext } from 'next';
 
 import Layout from '../layout';
 
@@ -16,15 +17,30 @@ const POST_QUERY = gql`
     }
   }
 `;
+interface PostQueryResult {
+  data: {
+    postBy: {
+      title: string;
+      content: string;
+      author: {
+        nickname: string;
+      };
+    };
+  };
+}
 
-const Post = ({ slug }) => {
+interface Props {
+  slug: string | string[] | undefined;
+}
+
+const Post: NextFunctionComponent<Props> = ({ slug }) => {
   if (!slug) {
     return <Error statusCode={404} />;
   }
 
   return (
     <Query query={POST_QUERY} variables={{ filter: slug }}>
-      {({ data }) => {
+      {({ data }: PostQueryResult) => {
         if (!data || !data.postBy || !data.postBy.title) {
           return <Error statusCode={404} />;
         }
@@ -45,7 +61,7 @@ const Post = ({ slug }) => {
   );
 };
 
-Post.getInitialProps = ({ query }) => {
+Post.getInitialProps = async ({ query }: NextContext): Promise<Props> => {
   if (!query) {
     return {
       slug: '',

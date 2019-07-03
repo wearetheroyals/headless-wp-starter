@@ -5,6 +5,7 @@ import Error from 'next/error';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 import lodashGet from 'lodash.get';
+import { NextFunctionComponent, NextContext } from 'next';
 
 import Layout from '../layout';
 
@@ -28,15 +29,39 @@ const CATEGORY_PAGE_QUERY = gql`
     }
   }
 `;
+interface CategoryQueryResult {
+  data: {
+    categories: {
+      edges: Array<{
+        node: {
+          description: string;
+          name: string;
+          posts: {
+            edges: Array<{
+              node: {
+                title: string;
+                slug: string;
+              };
+            }>;
+          };
+        };
+      }>;
+    };
+  };
+}
 
-const Category = ({ slug }) => {
+interface Props {
+  slug: string | string[] | undefined;
+}
+
+const Category: NextFunctionComponent<Props> = ({ slug }) => {
   if (!slug) {
     return <Error statusCode={404} />;
   }
 
   return (
     <Query query={CATEGORY_PAGE_QUERY} variables={{ slug: [slug] }}>
-      {({ data }) => {
+      {({ data }: CategoryQueryResult) => {
         const category = lodashGet(data, 'categories.edges[0].node');
         if (!category) {
           return <Error statusCode={404} />;
@@ -69,7 +94,7 @@ const Category = ({ slug }) => {
   );
 };
 
-Category.getInitialProps = ({ query }) => {
+Category.getInitialProps = async ({ query }: NextContext): Promise<Props> => {
   if (!query) {
     return {
       slug: '',

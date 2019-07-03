@@ -3,6 +3,7 @@ import React from 'react';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 import Link from 'next/link';
+import { NextFunctionComponent } from 'next';
 
 const MENU_QUERY = gql`
   query MenuQuery {
@@ -13,25 +14,28 @@ const MENU_QUERY = gql`
     }
   }
 `;
+interface MenuQueryResult {
+  data: {
+    headerMenu: {
+      url: string;
+      label: string;
+      type: string;
+    };
+  };
+}
 
 const linkStyle = {
   marginRight: 15,
 };
 
-const getSlug = (url: string): string => {
-  const parts = url.split('/');
-  return parts.length > 2 ? parts[parts.length - 2] : '';
-};
-
-const Menu = () => {
+const Menu: NextFunctionComponent<{}> = () => {
   return (
     <Query query={MENU_QUERY}>
-      {({ data }) => {
+      {({ data }: MenuQueryResult) => {
         if (!data || !data.headerMenu) {
           return null;
         }
 
-        console.log('renderMenu');
         const { headerMenu } = data;
 
         return (

@@ -1,10 +1,11 @@
 import React from 'react';
+import { NextFunctionComponent } from 'next';
 
 const hrStyle = {
   marginTop: 75,
 };
 
-const Footer = () => (
+const Footer: NextFunctionComponent<{}> = () => (
   <div>
     <hr style={hrStyle} />
     <p>

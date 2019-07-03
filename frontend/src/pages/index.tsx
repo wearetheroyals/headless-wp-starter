@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
+import { NextFunctionComponent } from 'next';
 
 import Layout from '../layout';
 
@@ -30,11 +31,31 @@ const INDEX_PAGE_QUERY = gql`
     }
   }
 `;
+interface IndexPageQueryResult {
+  data: {
+    posts: {
+      edges: Array<{
+        node: {
+          title: string;
+          slug: string;
+        };
+      }>;
+    };
+    pages: {
+      edges: Array<{
+        node: {
+          title: string;
+          slug: string;
+        };
+      }>;
+    };
+  };
+}
 
-const Index = () => {
+const Index: NextFunctionComponent = () => {
   return (
     <Query query={INDEX_PAGE_QUERY}>
-      {({ data }) => {
+      {({ data }: IndexPageQueryResult) => {
         if (!data || !data.pages || !data.posts) {
           return null;
         }

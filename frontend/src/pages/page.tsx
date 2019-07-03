@@ -2,6 +2,7 @@ import React from 'react';
 import Error from 'next/error';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
+import { NextFunctionComponent, NextContext } from 'next';
 
 import Layout from '../layout';
 
@@ -13,15 +14,27 @@ const PAGE_QUERY = gql`
     }
   }
 `;
+interface PageQueryResult {
+  data: {
+    pageBy: {
+      title: string;
+      content: string;
+    };
+  };
+}
 
-const Page = ({ slug }) => {
+interface Props {
+  slug: string | string[] | undefined;
+}
+
+const Page: NextFunctionComponent<Props> = ({ slug }) => {
   if (!slug) {
     return <Error statusCode={404} />;
   }
 
   return (
     <Query query={PAGE_QUERY} variables={{ uri: slug }}>
-      {({ data }) => {
+      {({ data }: PageQueryResult) => {
         if (!data || !data.pageBy || !data.pageBy.title) {
           return <Error statusCode={404} />;
         }
@@ -42,7 +55,7 @@ const Page = ({ slug }) => {
   );
 };
 
-Page.getInitialProps = ({ query }) => {
+Page.getInitialProps = async ({ query }: NextContext): Promise<Props> => {
   if (!query) {
     return {
       slug: '',
