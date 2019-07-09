@@ -3,7 +3,7 @@ import React from 'react';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 import Link from 'next/link';
-import { NextFunctionComponent } from 'next';
+import { NextFunctionComponent } from '../../next.d';
 
 import './style.scss';
 

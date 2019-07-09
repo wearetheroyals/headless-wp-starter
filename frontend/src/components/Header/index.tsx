@@ -1,6 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
-import { NextFunctionComponent } from 'next';
+import { NextFunctionComponent } from '../../next.d';
 
 const Header: NextFunctionComponent<{}> = () => (
   <Head>

@@ -5,9 +5,9 @@ import Error from 'next/error';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 import lodashGet from 'lodash.get';
-import { NextFunctionComponent, NextContext } from 'next';
+import { NextFunctionComponent, NextContext } from '../../next.d';
 
-import Layout from '../layout';
+import Layout from '../../layout';
 
 const CATEGORY_PAGE_QUERY = gql`
   query CategoryQuery($slug: [String]) {
@@ -56,7 +56,7 @@ interface Props {
 
 const Category: NextFunctionComponent<Props> = ({ slug }) => {
   if (!slug) {
-    return <Error statusCode={404} />;
+    return <Error title="Unable to find category" statusCode={404} />;
   }
 
   return (
@@ -64,7 +64,7 @@ const Category: NextFunctionComponent<Props> = ({ slug }) => {
       {({ data }: CategoryQueryResult) => {
         const category = lodashGet(data, 'categories.edges[0].node');
         if (!category) {
-          return <Error statusCode={404} />;
+          return <Error title="Unable to find category" statusCode={404} />;
         }
 
         const posts = lodashGet(category, 'posts.edges');

@@ -2,9 +2,9 @@ import React from 'react';
 import Error from 'next/error';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
-import { NextFunctionComponent, NextContext } from 'next';
+import { NextFunctionComponent, NextContext } from '../../next.d';
 
-import Layout from '../layout';
+import Layout from '../../layout';
 
 import './_page.scss';
 
@@ -31,14 +31,14 @@ interface Props {
 
 const Page: NextFunctionComponent<Props> = ({ slug }) => {
   if (!slug) {
-    return <Error statusCode={404} />;
+    return <Error title="Unable to find page" statusCode={404} />;
   }
 
   return (
     <Query query={PAGE_QUERY} variables={{ uri: slug }}>
       {({ data }: PageQueryResult) => {
         if (!data || !data.pageBy || !data.pageBy.title) {
-          return <Error statusCode={404} />;
+          return <Error title="Unable to find page" statusCode={404} />;
         }
 
         return (

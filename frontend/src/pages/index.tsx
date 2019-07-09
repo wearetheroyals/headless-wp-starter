@@ -2,11 +2,11 @@ import React from 'react';
 import Link from 'next/link';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
-import { NextFunctionComponent } from 'next';
+import { NextFunctionComponent } from '../next.d';
 
 import Layout from '../layout';
 
-import './_category.scss';
+import './_index.scss';
 
 const headerImageStyle = {
   marginTop: 50,

@@ -1,5 +1,5 @@
 import React from 'react';
-import { NextFunctionComponent } from 'next';
+import { NextFunctionComponent } from '../../next.d';
 
 import './style.scss';
 

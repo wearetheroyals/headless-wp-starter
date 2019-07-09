@@ -34,30 +34,6 @@ const start = async () => {
       server.use(proxyMiddleware(context, proxy[context]));
     });
 
-    server.get('/post/:slug', (req, res) => {
-      const actualPage = '/post';
-      const queryParams = { slug: req.params.slug };
-      app.render(req, res, actualPage, queryParams);
-    });
-
-    server.get('/page/:slug', (req, res) => {
-      const actualPage = '/page';
-      const queryParams = { slug: req.params.slug };
-      app.render(req, res, actualPage, queryParams);
-    });
-
-    server.get('/category/:slug', (req, res) => {
-      const actualPage = '/category';
-      const queryParams = { slug: req.params.slug };
-      app.render(req, res, actualPage, queryParams);
-    });
-
-    // server.get('/_preview/:id/:wpnonce', (req, res) => {
-    //   const actualPage = '/preview';
-    //   const queryParams = { id: req.params.id, wpnonce: req.params.wpnonce };
-    //   app.render(req, res, actualPage, queryParams);
-    // });
-
     server.get('*', (req, res) => {
       return handle(req, res);
     });

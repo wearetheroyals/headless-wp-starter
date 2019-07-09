@@ -2,9 +2,9 @@ import React from 'react';
 import Error from 'next/error';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
-import { NextFunctionComponent, NextContext } from 'next';
+import { NextFunctionComponent, NextContext } from '../../next.d';
 
-import Layout from '../layout';
+import Layout from '../../layout';
 
 import './_post.scss';
 
@@ -37,14 +37,14 @@ interface Props {
 
 const Post: NextFunctionComponent<Props> = ({ slug }) => {
   if (!slug) {
-    return <Error statusCode={404} />;
+    return <Error title="Unable to find post" statusCode={404} />;
   }
 
   return (
     <Query query={POST_QUERY} variables={{ filter: slug }}>
       {({ data }: PostQueryResult) => {
         if (!data || !data.postBy || !data.postBy.title) {
-          return <Error statusCode={404} />;
+          return <Error title="Unable to find post" statusCode={404} />;
         }
 
         return (
